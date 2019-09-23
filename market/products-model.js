@@ -2,7 +2,6 @@ const db = require('../database/dbConfig');
 
 module.exports = {
     get,
-    // getBy,
     getById,
     add,
     update,
@@ -35,7 +34,6 @@ function update(id, changes) {
     return db('products')
         .update(changes)
         .where({ id })
-        .then(update => update ? getById(id) : null);
 }
 
 function remove(id) {
