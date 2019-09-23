@@ -22,8 +22,8 @@ server.use('/api/products', authenticate, productRouter);
 server.use('/api/pricing', authenticate, priceRouter);
 
 //Testing the server
-server.get('/', (req, res) => {
-    res.send("It's alive!")
-})
+// server.get('/', (req, res) => {
+//     res.send("It's alive!")
+// })
 
 module.exports = server;
