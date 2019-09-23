@@ -62,6 +62,21 @@ exports.up = function (knex) {
                 .onDelete('CASCADE')
                 .onUpdate('CASCADE');
         })
+
+        .createTable('product_pricing', pricing => {
+            //id
+            pricing
+                .increments()
+
+            //name --> string --> notNullable()
+            pricing
+                .integer('price')
+                .notNullable()
+
+            //price --> integer (or decimal) --> notNullable()
+            // specificType(name, type) = Sets a specific type for the column creation, if you'd like to add a column type that isn't supported here.
+
+        })
 };
 
 exports.down = function (knex) {
