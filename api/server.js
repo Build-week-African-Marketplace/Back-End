@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 //Routers
 // const authenticate = require('');
-const authRouter = require('../auth/auth-router');
+const authRouter = require('../auth/auth-router.js');
 // const marketRouter = require('');
 
 //Server = express framework
@@ -16,7 +16,7 @@ server.use(cors());
 server.use(express.json());
 
 //Server Routes
-server.use('api/auth', authRouter);
+server.use('/api/', authRouter);
 // server.use('api/market', authenticate, marketRouter);
 
 //Testing the server

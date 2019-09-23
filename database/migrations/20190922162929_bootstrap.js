@@ -27,7 +27,8 @@ exports.up = function (knex) {
             //Email --> string --> unique
             users
                 .string('email', 156)
-                .unique();
+                .unique()
+                .notNullable()
         })
 
         .createTable('products', products => {
