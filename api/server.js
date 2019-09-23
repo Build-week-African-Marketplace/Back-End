@@ -17,7 +17,7 @@ server.use(cors());
 server.use(express.json());
 
 //Server Routes
-server.use('/api/', authRouter);
+server.use('/api', authRouter);
 server.use('/api/products', authenticate, productRouter);
 server.use('/api/pricing', authenticate, priceRouter);
 
