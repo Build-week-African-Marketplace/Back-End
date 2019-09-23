@@ -42,19 +42,6 @@ router.post('/login', (req, res) => {
           })
 })
 
-//Test
-router.get('/', (req,res) => {
-    let { username, password } = req.body;
-
-    Users.find({ username, password })
-    .then(user => {
-        res.status(200).json(user)
-    })
-    .catch(err => {
-        console.log('Login Error', err)
-        res.status(500).json(error);
-      })
-})
 
 //Generating a token
 function generateToken(user) {
