@@ -3,9 +3,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 //Routers
-// const authenticate = require('');
+const authenticate = require('../auth/auth-middleware.js');
 const authRouter = require('../auth/auth-router.js');
-// const marketRouter = require('');
+const productRouter = require('../market/products-router.js');
 
 //Server = express framework
 const server = express();
@@ -17,7 +17,7 @@ server.use(express.json());
 
 //Server Routes
 server.use('/api/', authRouter);
-// server.use('api/market', authenticate, marketRouter);
+server.use('/api/products', authenticate, productRouter);
 
 //Testing the server
 server.get('/', (req, res) => {
