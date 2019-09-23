@@ -44,8 +44,7 @@ exports.up = function (knex) {
             products
                 .string('description', 255)
 
-            //price --> integer (or decimal) --> notNullable()
-            // specificType(name, type) = Sets a specific type for the column creation, if you'd like to add a column type that isn't supported here.
+            //price --> integer --> notNullable()
             products
                 .integer('price')
                 .notNullable()
@@ -61,6 +60,36 @@ exports.up = function (knex) {
                 .onUpdate('CASCADE');
         })
 
+        .createTable('category', category => {
+            //id
+            category.increments()
+
+            //name --> string --> notNullable 
+            category
+                .string('name', 156)
+                .notNullable()
+        })
+
+        .createTable('sub_category', sub => {
+            //id
+            sub
+                .increments()
+
+            //name --> string --> notNullable 
+            sub
+                .string('name', 156)
+
+            //category_id --> FK
+            sub
+                .integer('category_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('category')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE');
+        })
+
         .createTable('product_pricing', pricing => {
             //id
             pricing
@@ -71,18 +100,47 @@ exports.up = function (knex) {
                 .string('name', 156)
                 .notNullable()
 
-            //price --> integer (or decimal) --> notNullable()
-            // specificType(name, type) = Sets a specific type for the column creation, if you'd like to add a column type that isn't supported here.
+            //price --> integer--> notNullable()
             pricing
                 .integer('pricing')
                 .notNullable()
 
+            //image?
+            pricing
+
+            //category_id --> FK
+            pricing
+                .integer('category_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('category')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE');
+
+            //sub_category_id --> FK
+            pricing
+                .integer('sub_category_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('sub_category')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE');
+            //location_id --> FK
+
         })
+
+    //location Table?!?!!??
+
+
 };
 
 exports.down = function (knex) {
     return knex.schema
         .dropTableIfExists('users')
         .dropTableIfExists('products')
+        .dropTableIfExists('category')
+        .dropTableIfExists('sub_category')
         .dropTableIfExists('product_pricing')
 };

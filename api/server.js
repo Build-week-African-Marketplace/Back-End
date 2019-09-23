@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const authenticate = require('../auth/auth-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const productRouter = require('../market/products-router.js');
-// const priceRouter = require()
+const priceRouter = require('../pricing/price-router')
 
 //Server = express framework
 const server = express();
@@ -19,6 +19,7 @@ server.use(express.json());
 //Server Routes
 server.use('/api/', authRouter);
 server.use('/api/products', authenticate, productRouter);
+server.use('/api/pricing', authenticate, priceRouter);
 
 //Testing the server
 server.get('/', (req, res) => {
