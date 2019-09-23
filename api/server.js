@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const authenticate = require('../auth/auth-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const productRouter = require('../market/products-router.js');
+// const priceRouter = require()
 
 //Server = express framework
 const server = express();

@@ -50,7 +50,6 @@ exports.up = function (knex) {
                 .integer('price')
                 .notNullable()
 
-
             //user_id FK
             products
                 .integer('users_id')
