@@ -11,11 +11,10 @@ exports.up = function (knex) {
                 .notNullable()
                 .unique();
 
-            //password --> string --> unique --> notNullable()
+            //password --> string --> notNullable()
             users
                 .string('password', 156)
                 .notNullable()
-                .unique();
 
             //First Name --> string 
             users
@@ -23,11 +22,11 @@ exports.up = function (knex) {
 
             //Last Name --> string 
             users
-                .string('first_name', 156)
+                .string('last_name', 156)
 
             //Email --> string --> unique
             users
-                .string('first_name', 156)
+                .string('email', 156)
                 .unique();
         })
 
@@ -47,9 +46,8 @@ exports.up = function (knex) {
             //price --> integer (or decimal) --> notNullable()
             // specificType(name, type) = Sets a specific type for the column creation, if you'd like to add a column type that isn't supported here.
             products
-                .integer()
+                .integer('price')
                 .notNullable()
-
 
 
             //user_id FK
@@ -70,11 +68,14 @@ exports.up = function (knex) {
 
             //name --> string --> notNullable()
             pricing
-                .integer('price')
+                .string('name', 156)
                 .notNullable()
 
             //price --> integer (or decimal) --> notNullable()
             // specificType(name, type) = Sets a specific type for the column creation, if you'd like to add a column type that isn't supported here.
+            pricing
+                .integer('pricing')
+                .notNullable()
 
         })
 };
@@ -83,4 +84,5 @@ exports.down = function (knex) {
     return knex.schema
         .dropTableIfExists('users')
         .dropTableIfExists('products')
+        .dropTableIfExists('product_pricing')
 };
