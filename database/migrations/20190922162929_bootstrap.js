@@ -105,9 +105,6 @@ exports.up = function (knex) {
                 .integer('pricing')
                 .notNullable()
 
-            //image?
-            pricing
-
             //category_id --> FK
             pricing
                 .integer('category_id')
