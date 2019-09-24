@@ -35,9 +35,10 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
-
+    
     Products.getById(id)
         .then(item => {
+             console.log(item)
             if(item) {
                 Products.update(changes, id)
                     .then(updateItem => {

@@ -32,8 +32,8 @@ function add(product) {
 function update(id, changes) {
     //update  products set  where id = 123
     return db('products')
-        .update(changes)
         .where({ id })
+        .update(changes)
 }
 
 function remove(id) {

@@ -1,34 +1,33 @@
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
   return knex('category').insert([
     {
-      name:"Animal Products"
+      categoryName:"Animal Products"
     },
     {
-      name:"Beans"
+      categoryName:"Beans"
     },
     {
-      name:"Cereals"
+      categoryName:"Cereals"
     },
     {
-      name:"Fruits"
+      categoryName:"Fruits"
     },
     {
-      name:"Other"
+      categoryName:"Other"
     },
     {
-      name:"Peas"
+      categoryName:"Peas"
     },
     {
-      name:"Roots & Tubers"
+      categoryName:"Roots & Tubers"
     },
     {
-      name:"Seeds & Nuts"
+      categoryName:"Seeds & Nuts"
     },
     {
-      name:"Vegetables"
-    },
+      categoryName:"Vegetables"
+    }
   ])
     
 };

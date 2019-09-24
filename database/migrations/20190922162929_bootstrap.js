@@ -37,7 +37,7 @@ exports.up = function (knex) {
 
             //name --> string --> notNullable()
             products
-                .string('name', 156)
+                .string('productName', 156)
                 .notNullable()
 
             //description --> string
@@ -51,7 +51,7 @@ exports.up = function (knex) {
 
             //user_id FK
             products
-                .integer('users_id')
+                .integer('user_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
@@ -66,18 +66,18 @@ exports.up = function (knex) {
 
             //name --> string --> notNullable 
             category
-                .string('name', 156)
+                .string('categoryName', 156)
                 .notNullable()
         })
 
-        .createTable('sub_category', sub => {
+        .createTable('subCategory', sub => {
             //id
             sub
                 .increments()
 
             //name --> string --> notNullable 
             sub
-                .string('name', 156)
+                .string('subCategoryName', 156)
 
             //category_id --> FK
             sub
@@ -90,19 +90,24 @@ exports.up = function (knex) {
                 .onUpdate('CASCADE');
         })
 
-        .createTable('product_pricing', pricing => {
+
+        .createTable('relevantPricing', pricing => {
             //id
             pricing
                 .increments()
 
             //name --> string --> notNullable()
             pricing
-                .string('name', 156)
+                .string('productName', 156)
                 .notNullable()
+
+            //images --> may need to change this to string or make longer length 
+            pricing
+                .binary('image', 255)
 
             //price --> integer--> notNullable()
             pricing
-                .integer('pricing')
+                .integer('price')
                 .notNullable()
 
             //category_id --> FK
@@ -115,20 +120,38 @@ exports.up = function (knex) {
                 .onDelete('CASCADE')
                 .onUpdate('CASCADE');
 
-            //sub_category_id --> FK
+            //sub_id --> FK
             pricing
-                .integer('sub_category_id')
+                .integer('sub_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
-                .inTable('sub_category')
+                .inTable('subCategory')
                 .onDelete('CASCADE')
                 .onUpdate('CASCADE');
+
             //location_id --> FK
+            pricing
+                .integer('location_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('location')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE');
 
         })
 
-    //location Table?!?!!??
+        .createTable('location', location=> {
+            //id
+            location.increments();
+
+            //name --> string --> notNullable()
+            location
+                .string('locationName')
+                .notNullable();
+            
+        })
 
 
 };
@@ -138,6 +161,7 @@ exports.down = function (knex) {
         .dropTableIfExists('users')
         .dropTableIfExists('products')
         .dropTableIfExists('category')
-        .dropTableIfExists('sub_category')
-        .dropTableIfExists('product_pricing')
+        .dropTableIfExists('subCategory')
+        .dropTableIfExists('relevantPricing')
+        .dropTableIfExists('location')
 };
