@@ -1,133 +1,133 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('sub_category').insert([
+  return knex('subCategory').insert([
     {
-      name:"Animal Products",
+      subCategoryName:"Animal Products",
       category_id:1
     },
     {
-      name:"Animal Products - Other",
+      subCategoryName:"Animal Products - Other",
       category_id:1
     },
     {
-      name:"Livestock",
+      subCategoryName:"Livestock",
       category_id:1
     },
     {
-      name:"Poultry",
+      subCategoryName:"Poultry",
       category_id:1
     },
     {
-      name:"Beans",
+      subCategoryName:"Beans",
       category_id:2
     },
     {
-      name:"Barley",
+      subCategoryName:"Barley",
       category_id:3
     },
     {
-      name:"Maize",
+      subCategoryName:"Maize",
       category_id:3
     },
     {
-      name:"Millet",
+      subCategoryName:"Millet",
       category_id:3
     },
     {
-      name:"Rice",
+      subCategoryName:"Rice",
       category_id:3
     },
     {
-      name:"Sorghum",
+      subCategoryName:"Sorghum",
       category_id:3
     },
     {
-      name:"Wheat",
+      subCategoryName:"Wheat",
       category_id:3
     },
     {
-      name:"Fruits",
+      subCategoryName:"Fruits",
       category_id:4
     },
     {
-      name:"Coffee",
+      subCategoryName:"Coffee",
       category_id:5
     },
     {
-      name:"Tea",
+      subCategoryName:"Tea",
       category_id:5
     },
     {
-      name:"Tobacco",
+      subCategoryName:"Tobacco",
       category_id:5
     },
     {
-      name:"Vanilla",
+      subCategoryName:"Vanilla",
       category_id:5
     },
     {
-      name:"Peas",
+      subCategoryName:"Peas",
       category_id:6
     },
     {
-      name:"Cassava",
+      subCategoryName:"Cassava",
       category_id:7
     },
     {
-      name:"Potatoes",
+      subCategoryName:"Potatoes",
       category_id:7
     },
     {
-      name:"Nuts",
+      subCategoryName:"Nuts",
       category_id:8
     },
     {
-      name:"Sunflowers",
+      subCategoryName:"Sunflowers",
       category_id:8
     },
     {
-      name:"Brinjals",
+      subCategoryName:"Brinjals",
       category_id:9
     },
     {
-      name:"Cabbages",
+      subCategoryName:"Cabbages",
       category_id:9
     },
     {
-      name:"Carrots",
+      subCategoryName:"Carrots",
       category_id:9
     },
     {
-      name:"Cauliflower",
+      subCategoryName:"Cauliflower",
       category_id:9
     },
     {
-      name:"Chillies",
+      subCategoryName:"Chillies",
       category_id:9
     },
     {
-      name:"Cucumber",
+      subCategoryName:"Cucumber",
       category_id:9
     },
     {
-      name:"Ginger",
+      subCategoryName:"Ginger",
       category_id:9
     },
     {
-      name:"Kales",
+      subCategoryName:"Kales",
       category_id:9
     },
     {
-      name:"Lettuce",
+      subCategoryName:"Lettuce",
       category_id:9
     },
     {
-      name:"Onions",
+      subCategoryName:"Onions",
       category_id:9
     },
     {
-      name:"Tomatoes",
+      subCategoryName:"Tomatoes",
       category_id:9
     }
   ])

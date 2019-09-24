@@ -3,76 +3,76 @@ exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('location').insert([
     {
-      name:"Arusha"
+      locationName:"Arusha"
     },
     {
-      name:"Arua"
+      locationName:"Arua"
     },
     {
-      name:"Babati"
+      locationName:"Babati"
     },
     {
-      name:"Bukavu"
+      locationName:"Bukavu"
     },
     {
-      name:"Chimbiya"
+      locationName:"Chimbiya"
     },
     {
-      name:"Dodoma"
+      locationName:"Dodoma"
     },
     {
-      name:"Eldoret"
+      locationName:"Eldoret"
     },
     {
-      name:"Gitega"
+      locationName:"Gitega"
     },
     {
-      name:"Goma"
+      locationName:"Goma"
     },
     {
-      name:"Isiolo"
+      locationName:"Isiolo"
     },
     {
-      name:"Juba"
+      locationName:"Juba"
     },
     {
-      name:"Kitale"
+      locationName:"Kitale"
     },
     {
-      name:"Liwonde"
+      locationName:"Liwonde"
     },
     {
-      name:"Mitundu"
+      locationName:"Mitundu"
     },
     {
-      name:"Mombasa"
+      locationName:"Mombasa"
     },
     {
-      name:"Namwera"
+      locationName:"Namwera"
     },
     {
-      name:"Owino"
+      locationName:"Owino"
     },
     {
-      name:"Phalombe"
+      locationName:"Phalombe"
     },
     {
-      name:"Rubavu"
+      locationName:"Rubavu"
     },
     {
-      name:"Songea"
+      locationName:"Songea"
     },
     {
-      name:"Uvira"
+      locationName:"Uvira"
     },
     {
-      name:"Tabora"
+      locationName:"Tabora"
     },
     {
-      name:"Tororo"
+      locationName:"Tororo"
     },
     {
-      name:"Yei"
+      locationName:"Yei"
     },
     
   ])
