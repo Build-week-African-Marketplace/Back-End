@@ -1,6 +1,5 @@
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
   return knex('category').insert([
     {
       name:"Animal Products"
@@ -28,7 +27,7 @@ exports.seed = function(knex) {
     },
     {
       name:"Vegetables"
-    },
+    }
   ])
     
 };

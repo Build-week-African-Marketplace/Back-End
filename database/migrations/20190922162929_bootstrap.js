@@ -90,6 +90,7 @@ exports.up = function (knex) {
                 .onUpdate('CASCADE');
         })
 
+
         .createTable('product_pricing', pricing => {
             //id
             pricing
@@ -124,11 +125,29 @@ exports.up = function (knex) {
                 .inTable('sub_category')
                 .onDelete('CASCADE')
                 .onUpdate('CASCADE');
+
             //location_id --> FK
+            pricing
+                .integer('location_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('location')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE');
 
         })
 
-    //location Table?!?!!??
+        .createTable('location', location=> {
+            //id
+            location.increments();
+
+            //name --> string --> notNullable()
+            location
+                .string('name')
+                .notNullable();
+            
+        })
 
 
 };
@@ -140,4 +159,5 @@ exports.down = function (knex) {
         .dropTableIfExists('category')
         .dropTableIfExists('sub_category')
         .dropTableIfExists('product_pricing')
+        .dropTableIfExists('location')
 };
