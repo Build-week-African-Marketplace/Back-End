@@ -29,11 +29,12 @@ function add(product) {
         })
 };
 
-function update(id, changes) {
+function update(changes, id) {
     //update  products set  where id = 123
     return db('products')
         .where({ id })
-        .update(changes)
+        .update(changes);
+        
 }
 
 function remove(id) {

@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
 });
 
 /************ UPDATE USER PRODUCT ************/
+//Not working
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
@@ -41,8 +42,8 @@ router.put('/:id', (req, res) => {
              console.log(item)
             if(item) {
                 Products.update(changes, id)
-                    .then(updateItem => {
-                        res.status(202).json(updateItem);
+                    .then(changeItem => {
+                         res.status(202).json({updated:changeItem});
                     })
             } else {
                 res.status(404).json({ message: 'Could not find the product with the given id' })
@@ -53,6 +54,7 @@ router.put('/:id', (req, res) => {
             res.status(500).json({ message: 'Failed to update product' })
         });
 });
+
 
 /*********** DELETE USER PRODUCT ***********/
 router.delete('/:id', (req, res) => {
