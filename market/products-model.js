@@ -18,7 +18,7 @@ function get() {
         'productName',
         'description',
         'price',
-        'users.id AS userId',
+        'users.id'
     )
     .join('users', 'users.id', 'products.user_id')
         
@@ -37,11 +37,14 @@ function getUserProducts(users_id) {
 }
 
 function getById(id) {
-    return get().where({ "products.user_id": id }).first();
+    return db('products')
+    .where({ id })
+    .first();
   }
 
 function getByUserId(id) {
-    return get().where({ "users.id": id });
+    return get()
+        .where({ "users.id": id });
 };
 
 function add(product) {
