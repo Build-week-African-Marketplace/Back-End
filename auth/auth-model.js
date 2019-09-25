@@ -5,7 +5,8 @@ module.exports = {
     add,
     findBy,
     findById,
-    find
+    find,
+    remove
 };
 
 //Registration
@@ -36,3 +37,10 @@ function find() {
     return db('users')
 }
 
+
+function remove(id) {
+    //delete from schemes where id = 123
+    return find()
+        .where('id', id)
+        .del()
+}

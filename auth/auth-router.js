@@ -58,6 +58,24 @@ router.get('/', restricted, (req, res) => {
         })
 })
 
+/*********** DELETE USER  ***********/
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    Users.remove(id)
+        .then(deleted => {
+            if (deleted) {
+                res.status(200).json({ removed: deleted })
+            } else {
+                res.status(404).json({ message: 'The user with the given id cannot be found' })
+            }
+        })
+        .catch(err => {
+            console.log('DELETE Products', err)
+            res.status(500).json({ message: 'Failed to delete user' })
+        });
+});
+
 
 
 //Generating a token

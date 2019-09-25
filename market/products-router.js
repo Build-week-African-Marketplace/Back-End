@@ -23,7 +23,7 @@ router.get('/', restricted, (req, res) => {
 
 router.get('/:id', restricted, validateUserId, (req, res) => {
     const userId = req.params.id
-    console.log(userId)
+    // console.log(userId)
     Products.getUserProducts(userId)
         .then(item => {
             res.status(200).json(item)
@@ -51,7 +51,7 @@ router.post('/', restricted, (req, res) => {
         });
 });
 
-router.post('/:user_id/', restricted, (req, res) => {
+router.post('/:user_id', restricted, (req, res) => {
     const { user_id } = req.params;
     const { productName, description, price, } = req.body;
     Products.add({ productName, description, price, user_id: parseInt(user_id, 10) })
@@ -100,7 +100,7 @@ router.delete('/:id', (req, res) => {
             if (deleted) {
                 res.status(200).json({ removed: deleted })
             } else {
-                res.status(404).json({ message: 'The product with the given cannot be found' })
+                res.status(404).json({ message: 'The product with the given id cannot be found' })
             }
         })
         .catch(err => {

@@ -14,6 +14,7 @@ function get() {
     //select * from products
     return db('products')
     .select(
+        'products.id',
         'productName',
         'description',
         'price',
@@ -62,7 +63,7 @@ function update(changes, id) {
 
 function remove(id) {
     //delete from schemes where id = 123
-    return db('products')
+    return get()
         .where('id', id)
         .del()
 }
