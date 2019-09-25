@@ -5,7 +5,7 @@ Products = require('./products-model.js');
 
 /*@@@@@@@@@@@ NEED VALIDATION MIDDLEWARE @@@@@@@@@@@*/
 
-/************** GET USER PRODUCTS **************/
+/************** GET PRODUCTS **************/
 router.get('/', restricted, (req, res) => {
     Products.get()
         .then(item => {
@@ -16,6 +16,19 @@ router.get('/', restricted, (req, res) => {
             res.status(500).json({ message: 'Failed to get products' })
         });
 });
+
+//can erase or leave
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    Products.getById(id)
+      .then(product => {
+        if (product) {
+          res.status(200).json(product);
+        } else {
+          res.status(404).end();
+        }
+      });
+  });
 
 /************** ADD USER PRODUCT **************/
 router.post('/', (req, res) => {
