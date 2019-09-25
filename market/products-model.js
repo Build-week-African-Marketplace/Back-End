@@ -2,6 +2,7 @@ const db = require('../database/dbConfig');
 
 module.exports = {
     get,
+    getByUserId,
     getById,
     add,
     update,
@@ -11,13 +12,23 @@ module.exports = {
 function get() {
     //select * from products
     return db('products')
+    .select(
+        'productName',
+        'description',
+        'price',
+        'users.id AS userId',
+        'users.username AS user_name'
+    )
+    .join('users', 'users.id', 'products.user_id')
+        
 };
 
 function getById(id) {
-    //select * from products where id = 123 is found first
-    return db('products')
-        .where(({ id }))
-        .first()
+    return get().where({ "products.user_id": id }).first();
+  }
+
+function getByUserId(id) {
+    return get().where({ "users.id": id });
 };
 
 function add(product) {

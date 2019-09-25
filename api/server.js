@@ -23,7 +23,7 @@ server.use('/api/pricing', authenticate, priceRouter);
 
 //Testing the server
 // server.get('/', (req, res) => {
-//     res.send("It's alive!")
-// })
-
+//     res.status(200).json({ api: 'up' })
+//   });
+  
 module.exports = server;
