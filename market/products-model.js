@@ -2,6 +2,7 @@ const db = require('../database/dbConfig');
 
 module.exports = {
     get,
+    getUserProducts,
     getByUserId,
     getById,
     add,
@@ -17,11 +18,22 @@ function get() {
         'description',
         'price',
         'users.id AS userId',
-        'users.username AS user_name'
     )
     .join('users', 'users.id', 'products.user_id')
         
 };
+
+function getUserProducts(users_id) {
+    return db('products')
+        .select(
+                'productName',
+                'description',
+                'price',
+                'users.id'
+            )
+        .join('users', 'users.id', 'products.user_id')
+        .where('products.user_id', users_id)
+}
 
 function getById(id) {
     return get().where({ "products.user_id": id }).first();

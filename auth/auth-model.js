@@ -1,11 +1,10 @@
 const db = require('../database/dbConfig');
-const Products = require('../market/products-model')
+// const Products = require('../market/products-model')
 
 module.exports = {
     add,
     findBy,
     findById,
-    findProductsByUserId,
     find
 };
 
@@ -37,12 +36,3 @@ function find() {
     return db('users')
 }
 
-//finding all users products by user id
-function findProductsByUserId(id) {
-    const userQuery = db('users').where({ id }).first();
-    return Promise.all([userQuery, Products.getByUserId(id)])
-        .then(([user, products]) => {
-            user.products = products;
-            return user;
-        });
-}
