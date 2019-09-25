@@ -68,16 +68,17 @@ router.post('/:user_id', restricted, (req, res) => {
 
 /************ UPDATE USER PRODUCT ************/
 
-router.put('/:id', restricted, (req, res) => {
+router.put('/update/:id', restricted, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
-
+    console.log(id)
     Products.getById(id)
         .then(item => {
             console.log(item)
             if (item) {
-                Products.update(changes, id)
+               return Products.update(changes, id)
                     .then(changeItem => {
+                        console.log(changeItem)
                         res.status(202).json({ updated: changeItem });
                     })
             } else {
