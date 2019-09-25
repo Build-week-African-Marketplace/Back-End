@@ -3,7 +3,7 @@ exports.seed = function(knex) {
   return knex('relevantPricing').insert([
     {
       productName:"Wheat Flour",
-      image:"https://images.app.goo.gl/sDsbwFRQZmsj7tK76",
+      image:"http://agrodaily.com/wp-content/uploads/2016/04/wheat.png",
       price:4,
       category_id:"3",
       sub_id:"11",
@@ -11,7 +11,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Beef",
-      image:"https://images.app.https://images.app.goo.gl/dnHwXGn6jZEczvY68.gl/sDsbwFRQZmsj7tK76",
+      image:"https://p7.hiclipart.com/preview/497/952/940/roast-beef-london-broil-pot-roast-round-steak-rump-steak-meat.jpg",
       price:12,
       category_id:"1",
       sub_id:"3",
@@ -19,7 +19,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Milk",
-      image:"https://images.app.goo.gl/5RZLSz4oJ957QxMG9",
+      image:"https://i7.pngguru.com/preview/497/643/804/photo-on-a-milk-carton-photo-on-a-milk-carton-royalty-free-vector-food-milk.jpg",
       price:5,
       category_id:"1",
       sub_id:"2",
@@ -27,7 +27,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Sweet Potatoes",
-      image:"https://images.app.goo.gl/6gAutFL1KHZFpzDH6",
+      image:"https://p7.hiclipart.com/preview/360/470/550/sweet-potato-vegetable-yam-organic-food-sweet-potato.jpg",
       price:8,
       category_id:"7",
       sub_id:"19",
@@ -35,7 +35,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Eggs",
-      image:"https://images.app.goo.gl/F26KYRbYQNYU9h6J7",
+      image:"http://www.pngplay.com/wp-content/uploads/2/Eggs-Transparent-Background.png",
       price:3,
       category_id:"1",
       sub_id:"2",
@@ -43,7 +43,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Honey",
-      image:"https://images.app.goo.gl/smykskFgWeiSPCMFA",
+      image:"http://www.pngplay.com/wp-content/uploads/1/Honey-PNG-Image.png",
       price:7,
       category_id:"1",
       sub_id:"2",
@@ -51,7 +51,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Millet Grain",
-      image:"https://images.app.goo.gl/dSmnw3MVbmBKq9QR6",
+      image:"https://www.pngarts.com/files/5/Millet-PNG-Download-Image.png",
       price:15,
       category_id:"3",
       sub_id:"8",
@@ -59,7 +59,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tomatoes",
-      image:"https://images.app.goo.gl/NxD2WKeLAy1PnEa8A",
+      image:"https://www.pinclipart.com/picdir/middle/363-3631339_free-png-download-tomato-transparent-png-images-background.png",
       price:1,
       category_id:"9",
       sub_id:"32",
@@ -75,7 +75,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tilapia",
-      image:"https://images.app.goo.gl/Lju7QBZ9gLXWcMdq8",
+      image:"https://library.kissclipart.com/20190512/fae/kissclipart-green-bean-olive-common-bean-color-b7573b82b1f76cdd.png",
       price:18,
       category_id:"1",
       sub_id:"2",

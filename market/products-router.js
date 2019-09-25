@@ -36,21 +36,8 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 
 
 /************** ADD USER PRODUCT **************/
-// router.post('/', restricted, (req, res) => {
-//     const productData = req.body;
-//     console.log(productData)
-//     Products.add(productData)
-//         .then(item => {
-//             res.status(201).json(item)
-//         })
-//         .catch(err => {
-//             console.log('POST Products', err)
-//             res.status(500).json({ message: 'Failed to add product' })
-//         });
-// });
 
 router.post('/add', restricted, (req, res) => {
-    // const { user_id } = req.params.id;
     const { productName, description, price, user_id} = req.body;
     Products.add(req.body)
         .then(pets => {
@@ -61,7 +48,6 @@ router.post('/add', restricted, (req, res) => {
             res.status(500).json({ message: 'Failed to add product' })
         });
 });
-// , user_id: parseInt(user_id, 10)
 
 
 /************ UPDATE USER PRODUCT ************/
