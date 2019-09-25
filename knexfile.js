@@ -16,7 +16,6 @@ module.exports = {
     }
   },
 
-  //need to watch videos. May need to change the connection and client values that are set up  for postgress. These may need to be different for first time production setup with heroku
   //npx heroku run knex migrate:latest -a name_of_heroku api
   production: {
     client: 'pg',

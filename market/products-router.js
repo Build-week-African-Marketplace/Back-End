@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const restricted = require('../auth/auth-middleware.js');
 
-
 Products = require('./products-model.js');
 Users = require('../auth/auth-model');
 
-/*@@@@@@@@@@@ NEED VALIDATION MIDDLEWARE @@@@@@@@@@@*/
+
 
 /************** GET PRODUCTS **************/
 router.get('/', restricted, (req, res) => {
@@ -108,9 +107,11 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 
-// custom middleware
 
-//validates user id on all endpoints using id parameters
+/*********** CUSTOM MIDDLEWARE ***********/
+
+//Validates user id on all endpoints using id parameters
+
 function validateUserId(req, res, next) {
     const userId = req.params.id
     Users.findById(userId)
@@ -128,8 +129,6 @@ function validateUserId(req, res, next) {
         })
 
 };
-
-
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const restricted = require('../auth/auth-middleware');
 
 Pricing = require('./price-model')
 
-/************** GET USER PRODUCTS **************/
+/************** GET PRICING **************/
 router.get('/', restricted, (req, res) => {
     Pricing.get()
         .then(price => {
@@ -15,7 +15,8 @@ router.get('/', restricted, (req, res) => {
         });
 });
 
-//May not need
+/************** GET PRICING BY ID **************/
+//May Not Need
 router.get('/:id', (req, res) => {
     const { id } = req.params;
 
