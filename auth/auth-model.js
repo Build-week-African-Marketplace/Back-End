@@ -1,12 +1,12 @@
 const db = require('../database/dbConfig');
-const Products = require('../market/products-model')
+// const Products = require('../market/products-model')
 
 module.exports = {
     add,
     findBy,
     findById,
-    findProductsByUserId,
-    find
+    find,
+    remove
 };
 
 //Registration
@@ -37,12 +37,10 @@ function find() {
     return db('users')
 }
 
-//finding all users products by user id
-function findProductsByUserId(id) {
-    const userQuery = db('users').where({ id }).first();
-    return Promise.all([userQuery, Products.getByUserId(id)])
-        .then(([user, products]) => {
-            user.products = products;
-            return user;
-        });
+
+function remove(id) {
+    //delete from schemes where id = 123
+    return find()
+        .where('id', id)
+        .del()
 }

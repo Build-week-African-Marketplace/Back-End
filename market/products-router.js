@@ -1,12 +1,15 @@
 const router = require('express').Router();
 const restricted = require('../auth/auth-middleware.js');
 
+
 Products = require('./products-model.js');
+Users = require('../auth/auth-model');
 
 /*@@@@@@@@@@@ NEED VALIDATION MIDDLEWARE @@@@@@@@@@@*/
 
 /************** GET PRODUCTS **************/
 router.get('/', restricted, (req, res) => {
+//test endpoint
     Products.get()
         .then(item => {
             res.status(200).json(item)
@@ -17,23 +20,27 @@ router.get('/', restricted, (req, res) => {
         });
 });
 
-//can erase or leave
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    Products.getById(id)
-      .then(product => {
-        if (product) {
-          res.status(200).json(product);
-        } else {
-          res.status(404).end();
-        }
-      });
-  });
+
+router.get('/:id', restricted, validateUserId, (req, res) => {
+    const userId = req.params.id
+    // console.log(userId)
+    Products.getUserProducts(userId)
+        .then(item => {
+            res.status(200).json(item)
+        })
+        .catch(err => {
+            console.log('GET Products', err)
+            res.status(500).json({ message: 'The users product information with the specified ID could not be retrieved.' })
+        });
+});
+
+
+
 
 /************** ADD USER PRODUCT **************/
-router.post('/', (req, res) => {
+router.post('/', restricted, (req, res) => {
     const productData = req.body;
-
+    console.log(productData)
     Products.add(productData)
         .then(item => {
             res.status(201).json(item)
@@ -44,19 +51,34 @@ router.post('/', (req, res) => {
         });
 });
 
+router.post('/:user_id', restricted, (req, res) => {
+    const { user_id } = req.params;
+    const { productName, description, price, } = req.body;
+    Products.add({ productName, description, price, user_id: parseInt(user_id, 10) })
+        .then(pets => {
+            res.status(200).json(pets);
+        })
+        .catch(err => {
+            console.log('POST Products', err)
+            res.status(500).json({ message: 'Failed to add product' })
+        });
+});
+
+
+
 /************ UPDATE USER PRODUCT ************/
-//Not working
-router.put('/:id', (req, res) => {
+
+router.put('/:id', restricted, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
-    
+
     Products.getById(id)
         .then(item => {
-             console.log(item)
-            if(item) {
+            console.log(item)
+            if (item) {
                 Products.update(changes, id)
                     .then(changeItem => {
-                         res.status(202).json({updated:changeItem});
+                        res.status(202).json({ updated: changeItem });
                     })
             } else {
                 res.status(404).json({ message: 'Could not find the product with the given id' })
@@ -78,7 +100,7 @@ router.delete('/:id', (req, res) => {
             if (deleted) {
                 res.status(200).json({ removed: deleted })
             } else {
-                res.status(404).json({ message: 'The product with the given cannot be found' })
+                res.status(404).json({ message: 'The product with the given id cannot be found' })
             }
         })
         .catch(err => {
@@ -86,6 +108,28 @@ router.delete('/:id', (req, res) => {
             res.status(500).json({ message: 'Failed to delete product' })
         });
 });
+
+
+// custom middleware
+//validates user id on all endpoints using id parameters
+function validateUserId(req, res, next) {
+    const userId = req.params.id
+    Users.findById(userId)
+        .then(user => {
+            console.log(user)
+            if (user) {
+                req.user = user;
+                next();
+            } else {
+                res.status(400).json({ message: "invalid user id" })
+            }
+        })
+        .catch(() => {
+            res.status(500).json({ errorMessage: "Could not validate user with the specified id" })
+        })
+
+};
+
 
 
 

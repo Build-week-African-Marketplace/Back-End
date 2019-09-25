@@ -6,6 +6,7 @@ const restricted = require('../auth/auth-middleware.js');
 
 
 Users = require('./auth-model');
+Products = require('../market/products-model')
 
 
 //Registration
@@ -45,7 +46,7 @@ router.post('/login', (req, res) => {
 })
 
 
-router.get('/user', (req, res) => {
+router.get('/', restricted, (req, res) => {
     let { username, password } = req.body;
     Users.find({ username, password } )
         .then(user => {
@@ -57,22 +58,25 @@ router.get('/user', (req, res) => {
         })
 })
 
-
-//Products belonging to a certain user
-router.get('/user/:id', restricted, (req, res) => {
+/*********** DELETE USER  ***********/
+router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    //need to use middleware for 404 error handling
-    Users.findProductsByUserId(id)
-      .then(products => {
-        if (products) {
-          res.status(200).json(products);
-        } 
-      })
-      .catch(err => {
-        console.log('Login Error', err)
-        res.status(500).json(error);
-    })
-  });
+
+    Users.remove(id)
+        .then(deleted => {
+            if (deleted) {
+                res.status(200).json({ removed: deleted })
+            } else {
+                res.status(404).json({ message: 'The user with the given id cannot be found' })
+            }
+        })
+        .catch(err => {
+            console.log('DELETE Products', err)
+            res.status(500).json({ message: 'Failed to delete user' })
+        });
+});
+
+
 
 //Generating a token
 function generateToken(user) {
