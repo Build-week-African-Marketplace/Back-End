@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
 const restricted = require('../auth/auth-middleware.js');
 
-
 Users = require('./auth-model');
 Products = require('../market/products-model')
 
 
-//Registration
+
+/*********** REGISTRATION  ***********/
 router.post('/signup', (req, res) => {
     let user = req.body;
     
@@ -17,7 +17,6 @@ router.post('/signup', (req, res) => {
     user.password = hash;
     Users.add(user)
     .then(saved => {
-        // console.log(saved)
         res.status(201).json(saved);
     }). catch(err => {
         console.log('User Registration', err)
@@ -25,16 +24,16 @@ router.post('/signup', (req, res) => {
     })
 })
 
-//Login
+/*********** LOGIN  ***********/
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
-    // console.log({username, password })
     Users.findBy({ username })
         .first()
         .then(user => {
             if (user && bcrypt.compareSync(password, user.password)) {
               const token = generateToken({ user })
-              res.status(200).json({ token })
+              const id = user.id
+              res.status(200).json({ token, id })
             } else {
               res.status(401).json({ message: 'Invalid Login Credentials' })
             }
@@ -45,7 +44,7 @@ router.post('/login', (req, res) => {
           })
 })
 
-
+/*********** TESTING FOR USERS IN THE DATABASE AFTER SIGNUP AND LOGIN ***********/
 router.get('/', restricted, (req, res) => {
     let { username, password } = req.body;
     Users.find({ username, password } )
@@ -58,7 +57,7 @@ router.get('/', restricted, (req, res) => {
         })
 })
 
-/*********** DELETE USER  ***********/
+/*********** DELETE USER: CLEANING UP DEVELOPMENT DATABASE ***********/
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -78,7 +77,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-//Generating a token
+/*********** GENERATING TOKEN  ***********/
 function generateToken(user) {
     const payload = {
         username: user.username

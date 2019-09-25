@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const restricted = require('../auth/auth-middleware.js');
 
-
 Products = require('./products-model.js');
 Users = require('../auth/auth-model');
 
-/*@@@@@@@@@@@ NEED VALIDATION MIDDLEWARE @@@@@@@@@@@*/
+
 
 /************** GET PRODUCTS **************/
 router.get('/', restricted, (req, res) => {
@@ -37,23 +36,23 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 
 
 /************** ADD USER PRODUCT **************/
-router.post('/', restricted, (req, res) => {
-    const productData = req.body;
-    console.log(productData)
-    Products.add(productData)
-        .then(item => {
-            res.status(201).json(item)
-        })
-        .catch(err => {
-            console.log('POST Products', err)
-            res.status(500).json({ message: 'Failed to add product' })
-        });
-});
+// router.post('/', restricted, (req, res) => {
+//     const productData = req.body;
+//     console.log(productData)
+//     Products.add(productData)
+//         .then(item => {
+//             res.status(201).json(item)
+//         })
+//         .catch(err => {
+//             console.log('POST Products', err)
+//             res.status(500).json({ message: 'Failed to add product' })
+//         });
+// });
 
-router.post('/add/:id', restricted, (req, res) => {
-    const { user_id } = req.params;
-    const { productName, description, price, } = req.body;
-    Products.add({ productName, description, price, user_id: parseInt(user_id, 10) })
+router.post('/add', restricted, (req, res) => {
+    // const { user_id } = req.params.id;
+    const { productName, description, price, user_id} = req.body;
+    Products.add(req.body)
         .then(pets => {
             res.status(200).json(pets);
         })
@@ -62,7 +61,7 @@ router.post('/add/:id', restricted, (req, res) => {
             res.status(500).json({ message: 'Failed to add product' })
         });
 });
-
+// , user_id: parseInt(user_id, 10)
 
 
 /************ UPDATE USER PRODUCT ************/
@@ -108,9 +107,11 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 
-// custom middleware
 
-//validates user id on all endpoints using id parameters
+/*********** CUSTOM MIDDLEWARE ***********/
+
+//Validates user id on all endpoints using id parameters
+
 function validateUserId(req, res, next) {
     const userId = req.params.id
     Users.findById(userId)
@@ -128,8 +129,6 @@ function validateUserId(req, res, next) {
         })
 
 };
-
-
 
 
 module.exports = router;

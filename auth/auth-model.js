@@ -1,5 +1,4 @@
 const db = require('../database/dbConfig');
-// const Products = require('../market/products-model')
 
 module.exports = {
     add,
@@ -39,7 +38,6 @@ function find() {
 
 
 function remove(id) {
-    //delete from schemes where id = 123
     return find()
         .where('id', id)
         .del()
