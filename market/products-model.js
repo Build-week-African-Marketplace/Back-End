@@ -66,7 +66,7 @@ function update(changes, id) {
 
 function remove(id) {
     //delete from schemes where id = 123
-    return get()
+    return db('products')
         .where('id', id)
         .del()
 }
