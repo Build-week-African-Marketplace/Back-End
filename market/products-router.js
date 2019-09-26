@@ -39,6 +39,7 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 
 router.post('/add', restricted, (req, res) => {
     const { productName, description, price, user_id} = req.body;
+    console.log(req.body)
     Products.add(req.body)
         .then(pets => {
             res.status(200).json(pets);
@@ -77,20 +78,38 @@ router.put('/update/:id', restricted, (req, res) => {
 /*********** DELETE USER PRODUCT ***********/
 router.delete('/delete/:id', (req, res) => {
     const { id } = req.params;
-
-    Products.remove(id)
-        .then(deleted => {
-            if (deleted) {
-                res.status(200).json({ removed: deleted })
+    console.log({id})
+    Products.getById(id)
+        .then(item => {
+            if (item) {
+               return Products.remove(id)
+                    .then(deleted  => {
+                        res.status(200).json({ removed: deleted })
+                    })
             } else {
                 res.status(404).json({ message: 'The product with the given id cannot be found' })
             }
         })
         .catch(err => {
-            console.log('DELETE Products', err)
-            res.status(500).json({ message: 'Failed to delete product' })
-        });
+                    console.log('DELETE Products', err)
+                    res.status(500).json({ message: 'Failed to delete product' })
+                });
 });
+    
+
+    // Products.remove(id)
+    //     .then(deleted => {
+    //         if (deleted) {
+    //             res.status(200).json({ removed: deleted })
+    //         } else {
+    //             res.status(404).json({ message: 'The product with the given id cannot be found' })
+    //         }
+    //     })
+    //     .catch(err => {
+    //         console.log('DELETE Products', err)
+    //         res.status(500).json({ message: 'Failed to delete product' })
+    //     });
+
 
 
 
