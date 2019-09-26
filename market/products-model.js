@@ -27,6 +27,7 @@ function get() {
 function getUserProducts(users_id) {
     return db('products')
         .select(
+                'products.id',
                 'productName',
                 'description',
                 'price',
