@@ -44,8 +44,8 @@ router.post('/login', (req, res) => {
           })
 })
 
-/*********** TESTING FOR USERS IN THE DATABASE AFTER SIGNUP AND LOGIN ***********/
-router.get('/',  (req, res) => {
+/*********** GET USERS ***********/
+router.get('/', restricted, (req, res) => {
     let { username, password } = req.body;
     Users.find({ username, password } )
         .then(user => {
@@ -57,8 +57,8 @@ router.get('/',  (req, res) => {
         })
 })
 
-/*********** DELETE USER: CLEANING UP DEVELOPMENT DATABASE ***********/
-router.delete('/:id', (req, res) => {
+/*********** DELETE USERS ***********/
+router.delete('/:id', restricted, (req, res) => {
     const { id } = req.params;
 
     Users.remove(id)
@@ -76,8 +76,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-
-/*********** GENERATING TOKEN  ***********/
+/*********** GENERATING A TOKEN  ***********/
 function generateToken(user) {
     const payload = {
         username: user.username

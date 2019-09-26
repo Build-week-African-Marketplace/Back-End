@@ -11,7 +11,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Beef",
-      image:"https://p7.hiclipart.com/preview/497/952/940/roast-beef-london-broil-pot-roast-round-steak-rump-steak-meat.jpg",
+      image:"https://purepng.com/public/uploads/large/purepng.com-meatfood-meat-red-fresh-grill-cook-beef-steak-9415246237676ksid.png",
       price:12,
       category_id:"1",
       sub_id:"3",
@@ -19,7 +19,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Milk",
-      image:"https://i7.pngguru.com/preview/497/643/804/photo-on-a-milk-carton-photo-on-a-milk-carton-royalty-free-vector-food-milk.jpg",
+      image:"https://images.vexels.com/media/users/3/160371/isolated/preview/6c40e6ebea6870c673bc72d8f215724d-milk-box-milk-cow-illustration-by-vexels.png",
       price:5,
       category_id:"1",
       sub_id:"2",
@@ -27,7 +27,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Sweet Potatoes",
-      image:"https://p7.hiclipart.com/preview/360/470/550/sweet-potato-vegetable-yam-organic-food-sweet-potato.jpg",
+      image:"https://www.pinpng.com/pngs/m/232-2320618_800-x-800-4-purple-sweet-potato-png.png",
       price:8,
       category_id:"7",
       sub_id:"19",
@@ -59,7 +59,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tomatoes",
-      image:"https://www.pinclipart.com/picdir/middle/363-3631339_free-png-download-tomato-transparent-png-images-background.png",
+      image:"https://www.pinclipart.com/picdir/middle/78-780682_tomato-png-clipart-image-transparent.png",
       price:1,
       category_id:"9",
       sub_id:"32",
@@ -67,7 +67,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Cowpeas",
-      image:"https://library.kissclipart.com/20190512/fae/kissclipart-green-bean-olive-common-bean-color-b7573b82b1f76cdd.png",
+      image:"https://www.pngfind.com/pngs/m/16-165130_free-png-download-green-beans-png-images-background.png",
       price:9,
       category_id:"9",
       sub_id:"9",
