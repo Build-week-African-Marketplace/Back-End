@@ -45,7 +45,7 @@ router.post('/login', (req, res) => {
 })
 
 /*********** TESTING FOR USERS IN THE DATABASE AFTER SIGNUP AND LOGIN ***********/
-router.get('/', restricted, (req, res) => {
+router.get('/',  (req, res) => {
     let { username, password } = req.body;
     Users.find({ username, password } )
         .then(user => {
