@@ -51,7 +51,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Eggs",
-      image:"http://www.pngplay.com/wp-content/uploads/2/Eggs-Transparent-Background.png",
+      image:"https://i.imgur.com/dLX75bp.jpg",
       price:3,
       category_id:"1",
       sub_id:"2",
@@ -59,7 +59,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Honey",
-      image:"http://www.pngplay.com/wp-content/uploads/1/Honey-PNG-Image.png",
+      image:"https://i.imgur.com/uSIdLgL.jpg",
       price:7,
       category_id:"1",
       sub_id:"2",
