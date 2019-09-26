@@ -67,7 +67,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Cowpeas",
-      image:"https://images.app.goo.gl/aAnCwm8urrez7UwG6",
+      image:"https://library.kissclipart.com/20190512/fae/kissclipart-green-bean-olive-common-bean-color-b7573b82b1f76cdd.png",
       price:9,
       category_id:"9",
       sub_id:"9",
@@ -75,7 +75,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tilapia",
-      image:"https://library.kissclipart.com/20190512/fae/kissclipart-green-bean-olive-common-bean-color-b7573b82b1f76cdd.png",
+      image:"https://images.app.goo.gl/aAnCwm8urrez7UwG6 ",
       price:18,
       category_id:"1",
       sub_id:"2",

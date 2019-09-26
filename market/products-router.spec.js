@@ -38,7 +38,7 @@ describe('products router', async () => {
 
 })
 
-describe('products router', () => {
+describe('products model', () => {
     beforeEach(async () => {
         await db('products').truncate();
     });
