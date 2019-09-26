@@ -35,11 +35,10 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 
 /************** ADD USER PRODUCT **************/
 router.post('/add',  (req, res) => {
-    const { productName, description, price, user_id} = req.body;
     console.log(req.body)
     Products.add(req.body)
         .then(pets => {
-            res.status(200).json(pets);
+            res.status(201).json(pets);
         })
         .catch(err => {
             console.log('POST Products', err)

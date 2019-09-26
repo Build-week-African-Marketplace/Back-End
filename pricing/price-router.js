@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
             if(price) {
                 res.status(200).json(price);
             } else {
-                res.status(404).json({ message: 'Could not find the products price with the given id.' })
+                res.status(404).json({ message: 'Could not find the product with the given id.' })
             }
         })
         .catch(err => {

@@ -40,6 +40,10 @@ exports.up = function (knex) {
                 .string('productName', 156)
                 .notNullable()
 
+            //images --> may need to change this to string or make longer length 
+            products
+                .binary('image', 255)
+
             //description --> string
             products
                 .string('description', 255)
