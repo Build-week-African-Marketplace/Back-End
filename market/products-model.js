@@ -16,6 +16,7 @@ function get() {
     .select(
         'products.id',
         'productName',
+        'image',
         'description',
         'price',
         'users.id AS user_id',
@@ -29,6 +30,7 @@ function getUserProducts(users_id) {
         .select(
                 'products.id',
                 'productName',
+                'image',
                 'description',
                 'price',
                 'users.id AS user_id'
