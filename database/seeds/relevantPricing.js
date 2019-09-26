@@ -75,7 +75,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tilapia",
-      image:"https://images.app.goo.gl/aAnCwm8urrez7UwG6 ",
+      image:"https://www.supremelobster.com/wp-content/uploads/tilapia.png",
       price:18,
       category_id:"1",
       sub_id:"2",
