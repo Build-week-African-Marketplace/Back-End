@@ -27,7 +27,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Sweet Potatoes",
-      image:"https://www.pinpng.com/pngs/m/232-2320618_800-x-800-4-purple-sweet-potato-png.png",
+      image:"https://i.imgur.com/LwiGxoD.jpg",
       price:8,
       category_id:"7",
       sub_id:"19",
@@ -59,7 +59,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Tomatoes",
-      image:"https://www.pinclipart.com/picdir/middle/78-780682_tomato-png-clipart-image-transparent.png",
+      image:"https://i.imgur.com/l8Z2g9p.jpg",
       price:1,
       category_id:"9",
       sub_id:"32",
@@ -67,7 +67,7 @@ exports.seed = function(knex) {
     },
     {
       productName:"Cowpeas",
-      image:"https://www.pngfind.com/pngs/m/16-165130_free-png-download-green-beans-png-images-background.png",
+      image:"https://i.imgur.com/iLVkoAi.jpg",
       price:9,
       category_id:"9",
       sub_id:"9",
@@ -80,6 +80,22 @@ exports.seed = function(knex) {
       category_id:"1",
       sub_id:"2",
       location_id:9
+    },
+    {
+      productName:"Goat",
+      image:"https://i.imgur.com/jApguL1.jpg",
+      price:12,
+      category_id:"1",
+      sub_id:"3",
+      location_id:15
+    },
+    {
+      productName:"Raw Honey",
+      image:"https://i.imgur.com/L65zYph.jpg",
+      price:7,
+      category_id:"1",
+      sub_id:"2",
+      location_id:6
     },
   ])
     
