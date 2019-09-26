@@ -16,7 +16,6 @@ router.get('/', restricted, (req, res) => {
 });
 
 /************** GET PRICING BY ID **************/
-//May Not Need
 router.get('/:id', (req, res) => {
     const { id } = req.params;
 

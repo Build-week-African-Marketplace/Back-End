@@ -49,7 +49,6 @@ function getByUserId(id) {
 };
 
 function add(product) {
-    //insert into products() values() use getById helper function
     return db('products')
         .insert(product)
         .then(ids => {
@@ -58,7 +57,6 @@ function add(product) {
 };
 
 function update(changes, id) {
-    //update  products set  where id = 123
     return db('products')
         .where({ id })
         .update(changes);

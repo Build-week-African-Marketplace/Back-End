@@ -16,7 +16,6 @@ module.exports = {
     }
   },
 
-  //npx heroku run knex migrate:latest -a name_of_heroku api
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,

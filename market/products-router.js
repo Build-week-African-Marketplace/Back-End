@@ -8,7 +8,6 @@ Users = require('../auth/auth-model');
 
 /************** GET PRODUCTS **************/
 router.get('/', restricted, (req, res) => {
-//test endpoint
     Products.get()
         .then(item => {
             res.status(200).json(item)
@@ -20,7 +19,7 @@ router.get('/', restricted, (req, res) => {
 });
 
 
-/*** GET PRODUCTS BY USER ID ***/
+/************* GET PRODUCTS BY USER ID *************/
 router.get('/:id', restricted, validateUserId, (req, res) => {
     const userId = req.params.id
     Products.getUserProducts(userId)
@@ -34,9 +33,7 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 });
 
 
-
 /************** ADD USER PRODUCT **************/
-
 router.post('/add',  (req, res) => {
     const { productName, description, price, user_id} = req.body;
     console.log(req.body)
@@ -52,7 +49,6 @@ router.post('/add',  (req, res) => {
 
 
 /************ UPDATE USER PRODUCT ************/
-
 router.put('/update/:id',  (req, res) => {
     const { id } = req.params;
     const changes = req.body;
@@ -98,7 +94,6 @@ router.delete('/delete/:id', (req, res) => {
     
 
 /*********** CUSTOM MIDDLEWARE ***********/
-
 //Validates user id on all endpoints using id parameters
 
 function validateUserId(req, res, next) {
