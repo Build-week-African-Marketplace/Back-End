@@ -37,7 +37,7 @@ router.get('/:id', restricted, validateUserId, (req, res) => {
 
 /************** ADD USER PRODUCT **************/
 
-router.post('/add', restricted, (req, res) => {
+router.post('/add',  (req, res) => {
     const { productName, description, price, user_id} = req.body;
     console.log(req.body)
     Products.add(req.body)
@@ -53,7 +53,7 @@ router.post('/add', restricted, (req, res) => {
 
 /************ UPDATE USER PRODUCT ************/
 
-router.put('/update/:id', restricted, (req, res) => {
+router.put('/update/:id',  (req, res) => {
     const { id } = req.params;
     const changes = req.body;
     console.log(id)
@@ -96,22 +96,6 @@ router.delete('/delete/:id', (req, res) => {
                 });
 });
     
-
-    // Products.remove(id)
-    //     .then(deleted => {
-    //         if (deleted) {
-    //             res.status(200).json({ removed: deleted })
-    //         } else {
-    //             res.status(404).json({ message: 'The product with the given id cannot be found' })
-    //         }
-    //     })
-    //     .catch(err => {
-    //         console.log('DELETE Products', err)
-    //         res.status(500).json({ message: 'Failed to delete product' })
-    //     });
-
-
-
 
 /*********** CUSTOM MIDDLEWARE ***********/
 

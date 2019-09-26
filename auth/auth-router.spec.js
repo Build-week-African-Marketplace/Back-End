@@ -1,48 +1,42 @@
-const router = require('../auth/auth-router')
+const server = require('../api/server')
 const request = require('supertest');
 
+const prepTestDB= require('../config/prepTestDB')
+const restrict= require('../config/test/test-middleware');
+jest.mock('../config/test/test-middleware');
 
-describe('auth-router', () => {
-//    it('get / ', async () => {
-//        const res = await request(router).get('/');
-//        expect(res.status).toBe(200);
-//        console.log(res.data)
-//    })
+
+beforeEach(prepTestDB);
+
+describe('Auth router', () => {
+    it('Post /api/signup', restrict, async () => {
+        const signup = {
+            username: 'admin',
+            password: ("password"),
+            first_name: 'admin',
+            last_name: 'password',
+            email: 'admin@password.com'
+        }
+
+        const res = await request(server)
+            .post('/users/login')
+            .send(signup)
+        expect(res.status).toBe(404)
+    })
+
+    it('get /api',restrict, async () => {
+        const signup = {
+            username: 'admin',
+            password: ("password"),
+            first_name: 'admin',
+            last_name: 'password',
+            email: 'admin@password.com'
+        }
+        const res = await request(server)
+            .get('users')
+        expect(res.status).toBe(200)
+        expect(res.body[1]).toEqual(signup)
+        expect(res.type).toMatch(/json/)
+    })
+
 })
-
-//  beforeEach(async () => {
-//         await db('users').truncate()
-//     })
-
-//     describe('POST api/login', () => {
-//         it('returns status 404', () => {
-//             const user = {
-//                 username: "admin",
-//                 password: "password"
-//             }
-
-//             return request(server)
-//                 .post('/login')
-//                 .send(user)
-//                 .then(res => expect(res.status).toBe(404))
-
-//         })
-
-//         it('returns status 500', () => {
-//             return request(server)
-//                 .post('/api/signup')
-//                 .then(res => expect(res.status).toBe(500))
-//         })
-
-//         it('returns JSON', () => {
-//             const user = {
-//                 username: "jade",
-//                 password: "jpassword"
-//             }
-
-//             return request(server)
-//             .post('/login')
-//             .send(user)
-//             .then(res => expect(res.type).toMatch(/json/i))
-//         })
-//     })
