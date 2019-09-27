@@ -12,7 +12,6 @@
   </a>
 </p>
 
-> T
 
 ## Introduction
 
@@ -25,6 +24,7 @@
 
 ### 🏠 [Homepage](https://github.com/Build-week-African-Marketplace/Back-End#readme)
 ### 📄 [API Docs](https://documenter.getpostman.com/view/8666652/SVn3ruoH)
+
 
 ## Install
 
