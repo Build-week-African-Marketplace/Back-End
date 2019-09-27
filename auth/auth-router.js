@@ -2,7 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
-const restricted = require('../auth/auth-middleware.js');
 
 Users = require('./auth-model');
 Products = require('../market/products-model')
@@ -44,47 +43,13 @@ router.post('/login', (req, res) => {
           })
 })
 
-/*********** GET USERS ***********/
-router.get('/', restricted, (req, res) => {
-    let { username, password } = req.body;
-    Users.find({ username, password } )
-        .then(user => {
-            res.status(200).json(user)
-        })
-        .catch(err => {
-            console.log('Login Error', err)
-            res.status(500).json(error);
-        })
-})
-
-/*********** DELETE USERS ***********/
-router.delete('/:id', restricted, (req, res) => {
-    const { id } = req.params;
-
-    Users.remove(id)
-        .then(deleted => {
-            if (deleted) {
-                res.status(200).json({ removed: deleted })
-            } else {
-                res.status(404).json({ message: 'The user with the given id cannot be found' })
-            }
-        })
-        .catch(err => {
-            console.log('DELETE Products', err)
-            res.status(500).json({ message: 'Failed to delete user' })
-        });
-});
-
 
 /*********** GENERATING A TOKEN  ***********/
 function generateToken(user) {
     const payload = {
         username: user.username
     };
-    const options = {
-        expiresIn: '365d'
-    }
-    return jwt.sign(payload, secrets.jwtSecret, options)
+    return jwt.sign(payload, secrets.jwtSecret)
 }
 
 module.exports = router
