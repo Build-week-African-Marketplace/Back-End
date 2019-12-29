@@ -22,7 +22,7 @@
  Hosted on [Heroku](https://africanmarket.herokuapp.com/), the RESTful API was built with technologies such as Node.js, Express, and knex.
 
 
-### 🏠 [Homepage](https://github.com/Build-week-African-Marketplace/Back-End#readme)
+### 🏠 [Homepage](https://front-end.bw-african-marketplace.now.sh/)
 ### 📄 [API Docs](https://documenter.getpostman.com/view/8666652/SVn3ruoH)
 
 
